@@ -1,24 +1,44 @@
-import { icons } from '@/constants/icons';
-import React from 'react';
-import { Image, TextInput, View } from 'react-native';
+import { Image, TextInput, TouchableOpacity, View } from "react-native";
 
-interface SearchBarProps {
+import { icons } from "@/constants/icons";
+
+interface Props {
   placeholder: string;
-  onPress: () => void;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  onClear?: () => void;
 }
 
-const SearchBar = ({ placeholder, onPress }: SearchBarProps) => {
+const SearchBar = ({ placeholder, value, onChangeText, onClear }: Props) => {
+  const showClearIcon = value && value.length > 0;
+
   return (
-    <View className='flex-row items-center bg-dark-200 rounded-full px-5 py-4'>
-      <Image source={icons.search} className='w-5 h-5 mr-2' />
+    <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
+      <Image
+        source={icons.search}
+        className="w-5 h-5"
+        resizeMode="contain"
+        tintColor="#AB8BFF"
+      />
       <TextInput
         placeholder={placeholder}
-        placeholderTextColor='#a8b5db'
-        className='flex-1 text-white text-sm ml-2'
-        onPress={onPress}
+        value={value}
+        onChangeText={onChangeText}
+        className="flex-1 ml-2 text-white"
+        placeholderTextColor="#A8B5DB"
       />
+      {showClearIcon && (
+        <TouchableOpacity onPress={onClear} className="ml-2">
+          <Image
+            source={icons.close}
+            className="size-3"
+            resizeMode="contain"
+            tintColor="#A8B5DB"
+          />
+        </TouchableOpacity>
+      )}
     </View>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
