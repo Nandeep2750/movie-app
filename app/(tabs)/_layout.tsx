@@ -38,7 +38,7 @@ TabIcon.displayName = 'TabIcon';
 const TAB_CONFIG = [
   { name: "index", title: "Home", icon: icons.home },
   { name: "search", title: "Search", icon: icons.search },
-  { name: "saved", title: "Saved", icon: icons.save },
+  { name: "save", title: "Saved", icon: icons.save },
   { name: "profile", title: "Profile", icon: icons.person },
 ] as const;
 
