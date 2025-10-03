@@ -28,7 +28,11 @@ const SearchBar = ({ placeholder, value, onChangeText, onClear }: Props) => {
         placeholderTextColor="#A8B5DB"
       />
       {showClearIcon && (
-        <TouchableOpacity onPress={onClear} className="ml-2">
+        <TouchableOpacity 
+          onPress={onClear} 
+          className="ml-2 p-1"
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
           <Image
             source={icons.close}
             className="size-3"
